@@ -46,5 +46,67 @@ def Xform "Root"
         float3 xformOp:scale = (1, 1, 1)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
+
+    def Xform "ParticleEmitter"
+    {
+        float3 xformOp:translate = (-0.5, 1.5, -1.5)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "VFXEmitter"
+        {
+            token info:id = "RealityKit.VFXEmitter"
+
+            def RealityKitStruct "currentState"
+            {
+                token birthDirection = "Constant"
+                token birthLocation = "Volume"
+                int64 burstCount = 1000
+                float3 emissionDirection = (0, 5, 0)
+                double emissionDuration = 8
+                double emissionDurationVariation = 5
+                token emitterShape = "Sphere"
+                bool isSpawningEnabled = 0
+                float particleSpeed = 1.5
+                float radialAmount = 11
+                float3 shapeSize = (0.2, 0.2, 0.1)
+                token spawnOccasion = "OnBirth"
+                float spawnVelocityFactor = 1
+
+                def RealityKitStruct "mainEmitter"
+                {
+                    float birthRate = 400
+                    float colorEvolutionPower = 0.55
+                    float dampingFactor = 0.5
+                    float4 endColorA = (1, 0, 0, 1)
+                    float noiseAnimationSpeed = 0
+                    float noiseStrength = 0
+                    token opacityOverLife = "GradualFadeInOut"
+                    float particleAngularVelocity = 10
+                    double particleLifeSpan = 0.6
+                    double particleLifeSpanVariation = 1
+                    float particleMass = 1
+                    float particleMassVariation = 0
+                    float particleSize = 0.25
+                    float particleSizeVariation = 0.06
+                    float3 radialGravityCenter = (1, 1, 1)
+                    float radialGravityStrength = 0.3
+                    float sizeMultiplierAtEndOfLifespan = 0.4
+                    float sizeMultiplierAtEndOfLifespanPower = 0.5
+                    float spreadingAngle = 0
+                    float4 startColorA = (0.95877147, 0.48455012, 0.035084426, 1)
+                    float4 startColorB = (1, 1, 1, 1)
+                    bool useEndColor = 1
+                    bool useEndColorRange = 0
+                    bool useStartColorRange = 0
+                    float3 vortexDirection = (0, 0, 0)
+                    float vortexStrength = 0
+                }
+
+                def RealityKitStruct "spawnedEmitter"
+                {
+                }
+            }
+        }
+    }
 }
 
